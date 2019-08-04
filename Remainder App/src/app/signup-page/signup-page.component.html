@@ -1,0 +1,44 @@
+<section class="login-block">
+  <div class="container">
+    <div class="row" style="width : 100%; padding-left : 3%">
+      <div class="login-sec">
+        <h2 class="text-center">Register</h2>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="text-uppercase">First Name *</label>
+          <input type="text" class="form-control" placeholder="" [(ngModel)]="newUser.firstname">
+
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="text-uppercase">Last Name *</label>
+          <input type="text" class="form-control" placeholder="" [(ngModel)]="newUser.lastname">
+
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="text-uppercase">Gender</label>
+          <input type="text" class="form-control" placeholder="" [(ngModel)]="newUser.gender">
+
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="text-uppercase">E-Mail *</label>
+          <input type="text" class="form-control" placeholder="" [(ngModel)]="newUser.email">
+
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+          <input type="password" class="form-control" placeholder="" [(ngModel)]="newUser.password">
+        </div>
+
+
+        <div class="form-check">
+
+
+          <button type="submit" class="btn btn-login" style="margin-top:5%" (click)="signupUser()">SignUp</button>
+          
+
+        </div>
+      </div>
+

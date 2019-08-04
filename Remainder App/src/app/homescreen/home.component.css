@@ -1,0 +1,15 @@
+.add-rem-button{
+    position: fixed;
+    right: 0;
+    margin-right: 16px;
+}
+
+.nav-home{
+    background-color: #DE6262!important;
+}
+
+.reminder-label{
+    cursor:pointer;
+     color:blue;
+     text-decoration:underline;
+}

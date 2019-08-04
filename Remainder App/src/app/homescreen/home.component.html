@@ -1,0 +1,128 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary nav-home">
+    <a class="navbar-brand" href="#">Welcome to the Reminder Application V.Sathananda Deekshit</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+
+        <button class="btn btn-secondary my-2 my-sm-0 add-rem-button" type="submit" (click)="openAddModal()">Add Reminder</button>
+
+    </div>
+</nav>
+
+<table class="table table-striped table-bordered questions-table">
+    <thead>
+        <tr>
+            <th>Label</th>
+            <th>Date</th>
+            <th>Frequency Type</th>
+            <th>Frequency Number</th>
+            <th>Enabled</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let field of reminders; let i = index">
+            <td style="width: 60%">
+                <label class="reminder-label" (click)="editReminder(field.id)">{{field.label}}</label>
+            </td>
+            <td style="width: 20%">
+                <label>{{field.date}}</label>
+            </td>
+            <td style="width: 20%">
+                <label>{{field.frequencytype}}</label>
+            </td>
+            <td>
+                <label>{{field.frequencynumber}}</label>
+            </td>
+            <td style="width: 20%">
+                <input style="margin-left: 10px" checked="{{field.status}}" class="form-check-input" type="checkbox">
+
+            </td>
+            <td>
+                    <div class="btn-group-vertical" data-toggle="buttons">
+                        <button type="button" class="btn btn-secondary" (click)="deleteReminder(field)">Delete</button>
+                    </div>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<jw-modal id="custom-modal-1" style="display: none">
+    <div class="form-group">
+        <label>New Reminder</label>
+    </div>
+    <hr>
+    <fieldset>
+        <div class="form-group row">
+            <label for="exampleInputEmail1">Reminder Label</label>
+            <input type="text" class="form-control" [(ngModel)]="reminder.label" placeholder="Enter label">
+        </div>
+
+        <div class="ui-g-12 ui-md-4 form-group row">
+            <label>Select Date and Time</label>
+            <p-calendar [(ngModel)]="reminder.date" showTime="true" hourFormat="12"></p-calendar>
+        </div>
+
+        <div class="ui-g-12 ui-md-4 form-group row">
+            <label>Select frequency type</label>
+            <select class="form-control" placeholder="Select" [(ngModel)]="reminder.frequencytype">
+                <option>Hours</option>
+                <option>Minutes</option>
+            </select>
+        </div>
+        <div class="ui-g-12 ui-md-4 form-group row" style="margin-left: 10px">
+            <label>Enter frequency</label>
+            <input type="text" class="form-control" [(ngModel)]="reminder.frequencynumber">
+        </div>
+
+        <div class="ui-g-12 ui-md-4 form-group row" style="margin-left: 10px">
+                <label>Enable</label>
+            <input [(ngModel)]="reminder.status" class="form-check-input" type="checkbox">
+        </div>
+    </fieldset>
+
+    <button (click)="setReminder()" style="margin-right: 5px">Submit</button>
+    <button (click)="closeModal()">Close</button>
+</jw-modal>
+
+
+<jw-modal id="custom-modal-2" style="display: none">
+    <div class="form-group">
+        <label>Edit Reminder</label>
+    </div>
+    <hr>
+    <fieldset>
+        <div class="form-group row">
+            <label for="exampleInputEmail1">Reminder Label</label>
+            <input type="text" class="form-control" [(ngModel)]="reminderToEdit.label" placeholder="Enter label">
+        </div>
+
+        <div class="ui-g-12 ui-md-4 form-group row">
+            <label>Date and Time</label>
+            <p-calendar [(ngModel)]="reminderToEdit.date" showTime="true" dateFormat="dd.mm.yyyy" hourFormat="12"></p-calendar>
+        </div>
+
+        <div class="ui-g-12 ui-md-4 form-group row">
+            <label>Frequency type</label>
+            <select class="form-control" placeholder="Select" [(ngModel)]="reminderToEdit.frequencytype">
+                <option>Hours</option>
+                <option>Minutes</option>
+            </select>
+        </div>
+        <div class="ui-g-12 ui-md-4 form-group row" style="margin-left: 10px">
+            <label>Frequency</label>
+            <input type="text" class="form-control" [(ngModel)]="reminderToEdit.frequencynumber">
+        </div>
+        <div class="ui-g-12 ui-md-4 form-group row" style="margin-left: 10px">
+            <label>Enable</label>
+            <input checked="reminderToEdit.status" class="form-check-input" type="checkbox">
+        </div>
+    </fieldset>
+
+    <button (click)="saveReminder()" style="margin-right: 5px">Save</button>
+    <button (click)="closeModal()">Cancel</button>
+</jw-modal>
